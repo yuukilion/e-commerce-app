@@ -1,6 +1,7 @@
 import { Button, Select, Typography, message } from "antd";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
+import { PurchaseCompleteModal } from "../components/PurchaseCompleteModal";
 import { CartAtom } from "../state/atom";
 import { PURCHASE_QUANTITY_OPTIONS } from "../state/constant";
 
@@ -10,6 +11,7 @@ export const CartPage = () => {
   const [CartList, setCartList] = useAtom(CartAtom);
   const [totalPrice, setTotalPrice] = useState(0);
   const [messageApi, contextHolder] = message.useMessage();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(()=>{
     const firstPrice = CartList.reduce((prev, currentProduct) => prev + currentProduct.price * currentProduct.quantity,0);
@@ -36,11 +38,18 @@ export const CartPage = () => {
     //removeAction
   };
 
+  const completePurchase = () => {
+    if(CartList.length){
+      setIsModalOpen(prev=> !prev)
+      setCartList([]);
+    }
+  }
 
   return (
     <>
       {contextHolder}
       {CartList.length ? <Title>Cart</Title> : <Title>現在カート内は空です。</Title>}
+      {isModalOpen && <PurchaseCompleteModal open={isModalOpen} setIsModalOpen={setIsModalOpen}/>}
       <div style={{width: '1200px'}}>
         <div>
           {CartList.map(product => {
@@ -58,7 +67,7 @@ export const CartPage = () => {
         </div>
         <div style={{border: 'solid'}}>
           <Text>{totalPrice}円</Text>
-          <Button type='primary'>購入</Button>
+          <Button type='primary' onClick={completePurchase}>購入</Button>
         </div>
       </div>
     </>
