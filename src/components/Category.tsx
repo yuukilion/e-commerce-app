@@ -17,7 +17,7 @@ export const Category = (props: Props) => {
             <div style={{overflowX: 'scroll', display: 'flex'}} >
                 <Space direction='horizontal' >
                     {products.map((product) => {
-                        return <Item key={product.name} img={product.image} name={product.name} description={product.description} price={product.price} id={product.id}/>;;
+                        return <Item key={product.name} img={product.image} name={product.name} description={product.description} price={product.price} id={product.id}/>;
                     })}
                 </Space>
             </div>
