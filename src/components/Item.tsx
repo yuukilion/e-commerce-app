@@ -8,11 +8,18 @@ import { AddCartButton } from './AddCartButton';
 
 const { Text } = Typography;
 
-export const Item = (prop: any) => {
+type ItemProps = {
+  id: number,
+  name: string,
+  description: string,
+  price: number,
+  img: string
+}
+
+export const Item = (prop: ItemProps) => {
   const {img, name, description, price, id} = prop;
   const [wishList, setWishList] = useAtom(WishListAtom);
   const [cartList, setCartList] = useAtom(CartAtom);
-  const [messageApi, contextHolder] = message.useMessage();
 
   const gridStyle: React.CSSProperties = {
       width: '100%',
@@ -21,62 +28,61 @@ export const Item = (prop: any) => {
       boxShadow: 'none'
   }
 
-  const toggleWishList = () => {
+  const toggleWishList = (id: number) => {
     const targetProduct = ALL_PRODUCT_LIST.find( product => product.id === id );
+    const duplicateProduct = cartList.find( product => product.id === id);
+
     const hasTargetInWishList = wishList.some( product => product === targetProduct);
+
     if(targetProduct && !hasTargetInWishList){
-      messageApi.open({
-        content: 'お気に入りリストに追加しました。',
-        duration: 2,
-        type: 'success'
-      })
+      message.success('お気に入りリストに追加しました',2);
       const newWishList = [...wishList,targetProduct];
       setWishList(newWishList);
     }
     else if(targetProduct && hasTargetInWishList){
-      messageApi.open({
-        content: 'お気に入りリストから削除しました。',
-        duration: 2,
-        type: 'warning'
-      })
+      message.info('お気に入りリストから削除しました',2);
       const newWishList = wishList.filter(product => product !== targetProduct);
       setWishList(newWishList); 
     }
+  //カートとお気に入りリストとで重複するアイテムを削除
+    if(duplicateProduct){
+      const newCartList = cartList.filter(product => product.id !== duplicateProduct.id);
+      setCartList(newCartList);
+    }
   };
 
-  const switchItemInCart = () => {
+  const switchItemInCart = (id: number) => {
     const targetProduct = ALL_PRODUCT_LIST.find( product => product.id === id );
+    const duplicateProduct = wishList.find( product => product.id === id);
+
     const hasTargetInCart = cartList.some( product => product === targetProduct);
+
     if(targetProduct && !hasTargetInCart){
-      messageApi.open({
-        content: 'カートに追加しました。',
-        duration: 2,
-        type: 'success'
-      })
+      message.success('カートに追加しました',2);
       const newCartList = [...cartList,targetProduct];
       setCartList(newCartList);
     }
     else if(targetProduct && hasTargetInCart){
-      messageApi.open({
-        content: 'カートから削除しました。',
-        duration: 2,
-        type: 'warning'
-      })
+      message.info('カートから削除しました',2)
       const newCartList = cartList.filter(product => product !== targetProduct);
       setCartList(newCartList); 
+    }
+    //カートとお気に入りリストとで重複するアイテムを削除
+    if(duplicateProduct){
+      const newWishList = wishList.filter(product => product.id !== duplicateProduct.id);
+      setWishList(newWishList);
     }
   }
 
   return (
     <>
-      {contextHolder}
       <Card
         hoverable
         style={{width: '240px', height: '100%'}}
         cover={<img alt={name} src={img} style={{widows: '240px',height:'240px'}}/>}
         actions={[
-            <MyHeartButton toggleWishList={toggleWishList}/>,
-            <AddCartButton switchItemInCart={switchItemInCart}/>
+            <MyHeartButton toggleWishList={()=>toggleWishList(id)}/>,
+            <AddCartButton switchItemInCart={()=>switchItemInCart(id)}/>
         ]}
       >
         <Meta title={name} description={description} style={{height: 80, textAlign: 'center'}}/>
