@@ -1,6 +1,6 @@
 import { ShoppingCartOutlined, } from '@ant-design/icons';
 import { Card } from 'antd'
-import pixel7Pro from '../assets/image/pixel7Pro.webp';
+import pixel7Pro from '../assets/image/Pixel7Pro.webp';
 import { MyHeartButton } from '../components/MyHeartButton';
 
 export const DetailPage = () => {
