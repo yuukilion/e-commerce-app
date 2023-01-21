@@ -1,30 +1,50 @@
 import './App.css';
 import { Layout } from 'antd';
 import { GoogleCircleFilled, HeartFilled, ShoppingCartOutlined } from '@ant-design/icons';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import { IndexPage } from './pages/IndexPage';
 import { DetailPage } from './pages/DetailPage';
 import { WishListPage } from './pages/WishListPage';
 import { CartPage } from './pages/CartPage';
+import { useEffect } from 'react';
+import { useAtom } from 'jotai';
+import { CartAtom, WishListAtom } from './state/atom';
 
 
-const { Header } = Layout;
+const { Header, Content } = Layout;
 
 function App() {
+  const [wishList, setWishList] = useAtom(WishListAtom);
+  const [cartList] = useAtom(CartAtom);  
+  
+  useEffect(()=>{
+    const newWishList = wishList.filter(product => {
+      console.log('boolean',cartList.includes(product));
+      return !cartList.includes(product);
+    });
+    setWishList(newWishList);  
+  }, [cartList]);
+
   return (
-    <Layout>
-      <Header style={{position: 'sticky', top: 0, zIndex: 1, width: '100%', backgroundColor: 'gray'}}>
+    <Layout style={{backgroundColor: 'white'}}>
+      <Header style={{position: 'sticky', top: 0, zIndex: 1, width: '100%', backgroundColor: 'black'}}>
         <div style={{display: 'flex', justifyContent: 'space-between'}}>
-          <div>
-            <GoogleCircleFilled style={{color: 'white', fontSize: '24px'}}/>
-          </div>
-          <div>
-            <HeartFilled style={{color: 'white', fontSize: '24px'}}/>
-            <ShoppingCartOutlined style={{color: 'white', fontSize: '24px'}}/>
+            <div>
+              <Link to='/'>
+                <GoogleCircleFilled style={{color: 'white', fontSize: '32px'}}/>
+              </Link>
+            </div>
+          <div style={{display: 'flex', gap: '16px'}}>
+            <Link to='/wishlist'>
+              <HeartFilled style={{color: 'white', fontSize: '24px'}}/>
+            </Link>
+            <Link to='/cart'>
+              <ShoppingCartOutlined style={{color: 'white', fontSize: '24px'}}/>
+            </Link>
           </div>
         </div>
       </Header>
-      <BrowserRouter>
+      <Content style={{margin: '0 auto'}}>
         <Routes>
           <Route path='/'>
             <Route index element={<IndexPage/>}/>
@@ -33,7 +53,7 @@ function App() {
             <Route path='/cart' element={<CartPage/>}/>
           </Route>
         </Routes>
-      </BrowserRouter>
+      </Content>
     </Layout>
   );
 }
