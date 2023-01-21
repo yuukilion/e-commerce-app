@@ -14,11 +14,11 @@ export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(()=>{
-    const firstPrice = CartList.reduce((prev, currentProduct) => prev + currentProduct.price * currentProduct.quantity,0);
-    setTotalPrice(firstPrice);
+    const totalPrice = CartList.reduce((prev, currentProduct) => prev + currentProduct.price * currentProduct.quantity,0);
+    setTotalPrice(totalPrice);
   },[CartList]);
 
-  const calcTotalPrice = (value: number, id: number) => {
+  const changeProductQuantity = (value: number, id: number) => {
     const newCartList = CartList.map((product) => {
       if(product.id === id){
         return {...product,quantity: value};
@@ -30,12 +30,14 @@ export const CartPage = () => {
     setCartList(newCartList)
   };
 
-  const removeItemInCart = () => {
+  const removeItemInCart = (id: number) => {
     messageApi.open({
+      type: 'info',
       duration: 2,
       content:  'カートから商品を削除しました。'
     });
-    //removeAction
+    const newCartList = CartList.filter(product => product.id !== id);
+    setCartList(newCartList);
   };
 
   const completePurchase = () => {
@@ -48,7 +50,7 @@ export const CartPage = () => {
   return (
     <>
       {contextHolder}
-      {CartList.length ? <Title>Cart</Title> : <Title>現在カート内は空です。</Title>}
+      {CartList.length ? <Title style={{textAlign: 'center'}}>Cart</Title> : <Title style={{textAlign: 'center'}}>現在カート内は空です</Title>}
       {isModalOpen && <PurchaseCompleteModal open={isModalOpen} setIsModalOpen={setIsModalOpen}/>}
       <div style={{width: '1200px'}}>
         <div>
@@ -58,8 +60,8 @@ export const CartPage = () => {
                   <img src={product.image} alt={product.name}/>
                   <Title>{product.name}</Title>
                   <Text strong style={{fontSize: '24px'}}>{product.price}円</Text>
-                  <Text strong>個数:<Select defaultValue={1} style={{width: '56px'}} options={PURCHASE_QUANTITY_OPTIONS} onChange={(value) => calcTotalPrice(value,product.id)}/></Text>
-                  <Button type='primary' onClick={removeItemInCart}>カートから削除</Button>
+                  <Text strong>個数:<Select defaultValue={1} style={{width: '56px'}} options={PURCHASE_QUANTITY_OPTIONS} onChange={(value) => changeProductQuantity(value,product.id)}/></Text>
+                  <Button type='primary' onClick={() => removeItemInCart(product.id)}>カートから削除</Button>
               </div>
             );
           })
