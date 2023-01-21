@@ -1,5 +1,6 @@
 import { atom } from 'jotai';
-import { ProductItem } from './product';
+import { ALL_PRODUCT_LIST, ProductItem } from './product';
 
 export const WishListAtom = atom<ProductItem[]>([]);
-export const CartAtom = atom([]);
+export const CartAtom = atom<ProductItem[]>([]);
+export const ProductAtom = atom<ProductItem[]>(ALL_PRODUCT_LIST);
