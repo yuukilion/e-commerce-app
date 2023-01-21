@@ -18,8 +18,8 @@ export const PurchaseCompleteModal = (props: any) => {
                 status='success'
                 title='正常に購入が完了しました！'
                 extra={[
-                  <Link to='/'>
-                    <Button key='GoIndex' type='primary'>続けて買い物</Button>
+                  <Link to='/' key='GoIndex'>
+                    <Button type='primary'>続けて買い物</Button>
                   </Link>,
                   <Button key='closeModal' onClick={closeModal}>閉じる</Button>
                 ]}
