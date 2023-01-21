@@ -6,25 +6,10 @@ import { IndexPage } from './pages/IndexPage';
 import { DetailPage } from './pages/DetailPage';
 import { WishListPage } from './pages/WishListPage';
 import { CartPage } from './pages/CartPage';
-import { useEffect } from 'react';
-import { useAtom } from 'jotai';
-import { CartAtom, WishListAtom } from './state/atom';
-
 
 const { Header, Content } = Layout;
 
 function App() {
-  const [wishList, setWishList] = useAtom(WishListAtom);
-  const [cartList] = useAtom(CartAtom);  
-  
-  useEffect(()=>{
-    const newWishList = wishList.filter(product => {
-      console.log('boolean',cartList.includes(product));
-      return !cartList.includes(product);
-    });
-    setWishList(newWishList);  
-  }, [cartList]);
-
   return (
     <Layout style={{backgroundColor: 'white'}}>
       <Header style={{position: 'sticky', top: 0, zIndex: 1, width: '100%', backgroundColor: 'black'}}>
