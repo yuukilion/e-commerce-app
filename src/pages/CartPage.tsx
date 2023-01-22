@@ -1,4 +1,4 @@
-import { Button, Select, Typography, message } from "antd";
+import { Button, Select, Typography, message, Col, Row } from "antd";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { PurchaseCompleteModal } from "../components/PurchaseCompleteModal";
@@ -52,25 +52,38 @@ export const CartPage = () => {
       {contextHolder}
       {CartList.length ? <Title style={{textAlign: 'center'}}>Cart</Title> : <Title style={{textAlign: 'center'}}>現在カート内は空です</Title>}
       {isModalOpen && <PurchaseCompleteModal open={isModalOpen} setIsModalOpen={setIsModalOpen}/>}
-      <div style={{width: '1200px'}}>
+      <div style={{width: '1200px', display: 'flex', gap: '24px', justifyContent: 'center'}}>
         <div>
           {CartList.map(product => {
             return (
-              <div key={product.id} style={{border: 'solid'}}>
-                  <img src={product.image} alt={product.name}/>
-                  <Title>{product.name}</Title>
-                  <Text strong style={{fontSize: '24px'}}>{product.price}円</Text>
-                  <Text strong>個数:<Select defaultValue={1} style={{width: '56px'}} options={PURCHASE_QUANTITY_OPTIONS} onChange={(value) => changeProductQuantity(value,product.id)}/></Text>
-                  <Button type='primary' onClick={() => removeItemInCart(product.id)}>カートから削除</Button>
+              <div key={product.id} style={{border: 'solid',marginBottom: '8px'}}>
+                <Row>
+                  <Col span={8}>
+                    <img src={product.image} alt={product.name}/>
+                  </Col>
+                  <Col span={8} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <Title>{product.name}</Title>
+                  </Col>
+                  <Col span={8} style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'center', gap:'8px', paddingRight: '8px'}}>
+                    <Text strong style={{fontSize: '24px'}}>{product.price}円</Text>
+                    <Text strong>個数:<Select defaultValue={1} style={{width: '56px'}} options={PURCHASE_QUANTITY_OPTIONS} onChange={(value) => changeProductQuantity(value,product.id)}/></Text>
+                    <Button type='primary' onClick={() => removeItemInCart(product.id)}>カートから削除</Button>
+                  </Col>
+                </Row>
               </div>
             );
           })
           }
         </div>
-        <div style={{border: 'solid'}}>
-          <Text>{totalPrice}円</Text>
-          <Button type='primary' onClick={completePurchase}>購入</Button>
-        </div>
+        { CartList.length > 0 &&
+          <div style={{border: 'solid',width: '160px',height: '80px',display: 'flex',flexDirection: 'column',justifyContent: 'center',alignItems: 'center'}}>
+            <div>
+              <Text strong>合計：</Text>
+              <Text strong>{totalPrice}円</Text>
+            </div>
+            <Button type='primary' onClick={completePurchase}>購入</Button>
+          </div> 
+        }
       </div>
     </>
   );

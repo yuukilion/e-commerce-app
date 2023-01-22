@@ -16,7 +16,7 @@ function App() {
         <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <div>
               <Link to='/'>
-                <GoogleCircleFilled style={{color: 'white', fontSize: '32px'}}/>
+                <GoogleCircleFilled style={{color: 'white', fontSize: '24px'}}/>
               </Link>
             </div>
           <div style={{display: 'flex', gap: '16px'}}>
