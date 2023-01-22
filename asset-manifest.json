@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.ab3d4e4a.js",
-    "static/js/787.4fb5f8c8.chunk.js": "/static/js/787.4fb5f8c8.chunk.js",
-    "static/media/Fitbit Sence2.png": "/static/media/Fitbit Sence2.571e4717e83012abb044.png",
-    "static/media/Pixel7.webp": "/static/media/Pixel7.28c49146328fd8dd21c3.webp",
-    "static/media/Pixel6Pro.webp": "/static/media/Pixel6Pro.a5374ce95e316343d3dd.webp",
-    "static/media/Fitbit Versa3.png": "/static/media/Fitbit Versa3.4730c001832ba2937075.png",
-    "static/media/Pixel7Pro.webp": "/static/media/Pixel7Pro.f2c27c598982d1efc85e.webp",
-    "static/media/Fitbit Versa4.png": "/static/media/Fitbit Versa4.9d7f9776ed796ee34f7d.png",
-    "static/media/Pixel6a.webp": "/static/media/Pixel6a.df04e30c0ac8e6da559c.webp",
-    "static/media/PixelWatch.png": "/static/media/PixelWatch.9dc94308180b3414b7d6.png",
-    "static/media/Fitbit Inspire3.png": "/static/media/Fitbit Inspire3.f65aaed939d9ae1c0dcf.png",
-    "static/media/Fitbit Charge5.png": "/static/media/Fitbit Charge5.a1a690fdb2eee8c1e96a.png",
-    "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.ab3d4e4a.js.map": "/static/js/main.ab3d4e4a.js.map",
-    "787.4fb5f8c8.chunk.js.map": "/static/js/787.4fb5f8c8.chunk.js.map"
+    "main.css": "/e-commerce-app/static/css/main.073c9b0a.css",
+    "main.js": "/e-commerce-app/static/js/main.bfc18e91.js",
+    "static/js/787.4fb5f8c8.chunk.js": "/e-commerce-app/static/js/787.4fb5f8c8.chunk.js",
+    "static/media/Fitbit Sence2.png": "/e-commerce-app/static/media/Fitbit Sence2.571e4717e83012abb044.png",
+    "static/media/Pixel7.webp": "/e-commerce-app/static/media/Pixel7.28c49146328fd8dd21c3.webp",
+    "static/media/Pixel6Pro.webp": "/e-commerce-app/static/media/Pixel6Pro.a5374ce95e316343d3dd.webp",
+    "static/media/Fitbit Versa3.png": "/e-commerce-app/static/media/Fitbit Versa3.4730c001832ba2937075.png",
+    "static/media/Pixel7Pro.webp": "/e-commerce-app/static/media/Pixel7Pro.f2c27c598982d1efc85e.webp",
+    "static/media/Fitbit Versa4.png": "/e-commerce-app/static/media/Fitbit Versa4.9d7f9776ed796ee34f7d.png",
+    "static/media/Pixel6a.webp": "/e-commerce-app/static/media/Pixel6a.df04e30c0ac8e6da559c.webp",
+    "static/media/PixelWatch.png": "/e-commerce-app/static/media/PixelWatch.9dc94308180b3414b7d6.png",
+    "static/media/Fitbit Inspire3.png": "/e-commerce-app/static/media/Fitbit Inspire3.f65aaed939d9ae1c0dcf.png",
+    "static/media/Fitbit Charge5.png": "/e-commerce-app/static/media/Fitbit Charge5.a1a690fdb2eee8c1e96a.png",
+    "index.html": "/e-commerce-app/index.html",
+    "main.073c9b0a.css.map": "/e-commerce-app/static/css/main.073c9b0a.css.map",
+    "main.bfc18e91.js.map": "/e-commerce-app/static/js/main.bfc18e91.js.map",
+    "787.4fb5f8c8.chunk.js.map": "/e-commerce-app/static/js/787.4fb5f8c8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.ab3d4e4a.js"
+    "static/js/main.bfc18e91.js"
   ]
 }
