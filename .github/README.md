@@ -1,8 +1,9 @@
 ## Sample E-commerceサイト
-RecursionのReactプロジェクト課題です。
+コンピュータサイエンス学習サイトRecursionのReactプロジェクト課題です。
 
 ## 概要
 このプロジェクトでは、商品の閲覧からお気に入りリストへの追加、カートへの追加、購入までを体験することが出来ます。
 模擬サイトですので代金の請求はありません。
+実際に以下のサイトにて動作を確認することが出来ます。
 
 プロジェクトのURL: https://yuukilion.github.io/e-commerce-app
