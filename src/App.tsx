@@ -12,7 +12,7 @@ const { Header, Content } = Layout;
 function App() {
   return (
     <Layout style={{backgroundColor: 'white'}}>
-      <Header style={{position: 'sticky', top: 0, zIndex: 1, width: '100%', backgroundColor: 'black'}}>
+      <Header style={{position: 'sticky', top: 0, zIndex: 1, width: '100%', backgroundColor: 'black', minWidth: '960px'}}>
         <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <div>
               <Link to='/'>

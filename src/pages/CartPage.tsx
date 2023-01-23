@@ -52,7 +52,7 @@ export const CartPage = () => {
       {contextHolder}
       {CartList.length ? <Title style={{textAlign: 'center'}}>Cart</Title> : <Title style={{textAlign: 'center'}}>現在カート内は空です</Title>}
       {isModalOpen && <PurchaseCompleteModal open={isModalOpen} setIsModalOpen={setIsModalOpen}/>}
-      <div style={{width: '1200px', display: 'flex', gap: '24px', justifyContent: 'center'}}>
+      <div style={{width: '960px', display: 'flex', gap: '24px', justifyContent: 'center'}}>
         <div>
           {CartList.map(product => {
             return (

@@ -9,7 +9,7 @@ export const WishListPage = () => {
   const [wishList] = useAtom(WishListAtom);
 
   return (
-    <div style={{width: '800px'}}>
+    <div style={{width: '960px'}}>
       {wishList.length ? <Title style={{textAlign: 'center'}}>WishList</Title> : <Title style={{textAlign: 'center'}}>現在お気に入りリストは空です</Title>}
       <div style={{display: 'flex',flexWrap: 'wrap',justifyContent: 'center', gap: '24px'}}>
         {wishList.map((product) => {

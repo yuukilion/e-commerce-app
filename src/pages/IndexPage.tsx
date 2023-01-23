@@ -30,7 +30,7 @@ export const IndexPage = () => {
   };
 
   return (
-      <div style={{width: '960px'}}>
+      <div style={{width: '960px',margin: '0 auto'}}>
         <div style={{display: 'flex', justifyContent: 'flex-end'}}>
           <div style={{display: 'flex',flexDirection: 'column', alignItems: 'center'}}>
             <span>Sort</span>
