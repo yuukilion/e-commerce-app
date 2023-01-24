@@ -1,5 +1,5 @@
 ## Sample E-commerceサイト
-コンピュータサイエンス学習サイトRecursionのReactプロジェクト課題です。
+コンピュータサイエンス学習サイト[Recursion](https://recursionist.io/)のReactプロジェクト課題です。
 
 ## 概要
 このプロジェクトでは、商品の閲覧からお気に入りリストへの追加、カートへの追加、購入までを体験することが出来ます。<br>
