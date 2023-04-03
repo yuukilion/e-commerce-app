@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Prettier and ESLint
+        run: |
+          npx prettier --check "**/*.{js,jsx,ts,tsx}"
+          echo "Prettier check passed!"
+          npm run lint && echo "ESLint check passed!"
