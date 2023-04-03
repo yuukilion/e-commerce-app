@@ -1,5 +1,5 @@
-import { atom } from 'jotai';
-import { ALL_PRODUCT_LIST, ProductItem } from './product';
+import { atom } from "jotai";
+import { ALL_PRODUCT_LIST, ProductItem } from "./product";
 
 export const WishListAtom = atom<ProductItem[]>([]);
 export const CartAtom = atom<ProductItem[]>([]);
