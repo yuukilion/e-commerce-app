@@ -2,14 +2,14 @@ import { Space, Typography } from "antd";
 import { ProductItem } from "../state/product";
 import { Item } from "./Item";
 
-type Props = {
+type CategoryProps = {
   title: string;
   products: ProductItem[];
 };
 
 const { Title } = Typography;
 
-export const Category = (props: Props) => {
+export const Category = (props: CategoryProps) => {
   const { title, products } = props;
   return (
     <div>
